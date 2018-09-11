@@ -4,6 +4,6 @@ import com.lanying.util.Apple;
 
 public class AppleController {
 	
-	private Apple apple;
+	private Apple apple1;
 	
 }
