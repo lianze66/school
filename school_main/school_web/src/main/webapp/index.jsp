@@ -14,10 +14,15 @@
 					ws = new MozWebSocket(url);
 				} else {
 					alert("您的浏览器版本过低，不支持websocket。");
+					return;
 				}
 				
 				ws.onopen = function() {
-					alert("AAA");
+					ws.send("Hello world");
+				};
+				
+				ws.onmessage = function(e) {
+					document.getElementById("showInfo").innerHTML=e.data;
 				};
 			}
 		</script>
@@ -25,5 +30,6 @@
 	
 	<body>
 		<input type="button" value="测试websocket" onclick="sendMessage();" />
+		<div id="showInfo"></div>
 	</body>
 </html>
