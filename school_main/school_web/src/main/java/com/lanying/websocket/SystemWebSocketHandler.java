@@ -16,27 +16,23 @@ public class SystemWebSocketHandler implements WebSocketHandler {
 	@Override
 	public void handleMessage(WebSocketSession session,
 			WebSocketMessage<?> message) throws Exception {
-		// TODO Auto-generated method stub
-		
+		System.out.println("websocket处理消息。");
 	}
 
 	@Override
 	public void handleTransportError(WebSocketSession session,
 			Throwable exception) throws Exception {
-		// TODO Auto-generated method stub
-		
+		System.out.println("websocket传输错误。");
 	}
 
 	@Override
 	public void afterConnectionClosed(WebSocketSession session,
 			CloseStatus closeStatus) throws Exception {
-		// TODO Auto-generated method stub
-		
+		System.out.println("websocket关闭连接。");
 	}
 
 	@Override
 	public boolean supportsPartialMessages() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
