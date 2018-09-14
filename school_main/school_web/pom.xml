@@ -9,10 +9,10 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>com.lanying</groupId>
-	<artifactId>school_webapp</artifactId>
+	<artifactId>school_web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>school_webapp Maven Webapp</name>
+	<name>school_web Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
@@ -60,8 +60,18 @@
 			<artifactId>spring-tx</artifactId>
 			<version>4.2.0.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>4.2.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-messaging</artifactId>
+			<version>4.2.0.RELEASE</version>
+		</dependency>
 	</dependencies>
 	<build>
-		<finalName>school_webapp</finalName>
+		<finalName>school_web</finalName>
 	</build>
 </project>
