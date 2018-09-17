@@ -14,13 +14,9 @@
     <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
     <title>适学网</title>
     <!--开发环境-->
-    <link rel="stylesheet" type="text/css" href="css/lib/base.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <!--==end-->
-    <!--线上
-    <link rel="stylesheet" type="text/css" href="css/main.min.css">
-    <!--==end-->
-    <script type="text/javascript" src="js/ios.js"></script>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/styles/base.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/view/styles/main.css" />
+    <script type="text/javascript" src="<%=request.getContextPath()%>/view/js/ios.js"></script>
   </head>
   <body>
       <div class="wrapper">
@@ -39,7 +35,7 @@
                   <div class="slide-wrapper">
                     <div class="slide-box">
                       <div class="slide-sub">
-                        <a href="https://weibo.com/"><img src="images/banner_1.png" alt="" title=""></a>
+                        <a href="https://weibo.com/"><img src="<%=request.getContextPath()%>/view/images/banner_1.png" alt="" title=""></a>
                       </div>
                     </div>
                     <div class="slide-box">
@@ -76,25 +72,25 @@
               <div class="nav">
                 <div class="m-nav-main m-box">
                     <div class="m-nav-box m-box-col">
-                      <a href="course.html">
+                      <a href="<%=request.getContextPath()%>/view/course.jsp">
                         <i class="m-icon m-icon-course"></i>
                         <span>课程</span>
                       </a>
                     </div>
                     <div class="m-nav-box m-box-col">
-                      <a href="video.html">
+                      <a href="<%=request.getContextPath()%>/view/video.jsp">
                         <i class="m-icon m-icon-video"></i>
                         <span>视频</span>
                       </a>
                     </div>
                     <div class="m-nav-box m-box-col">
-                      <a href="#">
+                      <a href="<%=request.getContextPath()%>/view/audition.jsp">
                         <i class="m-icon m-icon-look"></i>
                         <span>试听</span>
                       </a>
                     </div>
                     <div class="m-nav-box m-box-col">
-                      <a href="#">
+                      <a href="<%=request.getContextPath()%>/view/message.jsp">
                         <i class="m-icon m-icon-msg"></i>
                         <span>留言</span>
                       </a>

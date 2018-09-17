@@ -19,6 +19,9 @@
 	
 	<mvc:annotation-driven />
 	
+	<!-- 让所有的静态资源可以无限制访问。 -->
+	<mvc:default-servlet-handler />
+	
 	<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 		<property name="supportedMediaTypes">
 			<list>

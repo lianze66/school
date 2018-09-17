@@ -17,6 +17,8 @@
 					return;
 				}
 				
+				alert(ws.OPEN);
+				
 				ws.onopen = function() {
 					ws.send("Hello world");
 				};
