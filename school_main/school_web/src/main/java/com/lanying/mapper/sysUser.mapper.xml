@@ -12,4 +12,5 @@
 	<select id="queryList" resultMap="sysUserMap">
 		select * from sys_user;
 	</select>
+	
 </mapper>
