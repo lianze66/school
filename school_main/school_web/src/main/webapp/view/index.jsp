@@ -360,7 +360,7 @@
               </div>
           </div>
       </div>
-      <script type="text/javascript" src="js/swiper.min.js"></script>
+      <script type="text/javascript" src="<%=request.getContextPath()%>/view/js/swiper.min.js"></script>
       <script type="text/javascript">
         ;(function(win,doc){
             var bannerSwiper = new Swiper ('.swiper-container', {
