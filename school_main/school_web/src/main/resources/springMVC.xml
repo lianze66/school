@@ -16,7 +16,6 @@
 	<context:component-scan base-package="com.lanying.controller" />
 	<context:component-scan base-package="com.lanying.service.impl" />
 	<context:component-scan base-package="com.lanying.websocket" />
-	<context:component-scan base-package="com.lanying.test" />
 	
 	<mvc:annotation-driven />
 	
@@ -31,11 +30,11 @@
 		</property>
 	</bean>
 	
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-        <property name="prefix" value="/main/" />
-        <property name="suffix" value=".jsp" />
-    </bean>
+<!--     <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"> -->
+<!--         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> -->
+<!--         <property name="prefix" value="/main/" /> -->
+<!--         <property name="suffix" value=".jsp" /> -->
+<!--     </bean> -->
     
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
         <property name="messageConverters">
