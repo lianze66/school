@@ -11,4 +11,6 @@
 	
 	<import resource="redis.xml" />
 	
+	<import resource="freemarker.xml" />
+	
 </beans>
