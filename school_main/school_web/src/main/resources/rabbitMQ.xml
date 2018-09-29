@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:rabbit="http://www.springframework.org/schema/rabbit" 
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.2.xsd 
+		http://www.springframework.org/schema/rabbit 
+		http://www.springframework.org/schema/rabbit/spring-rabbit-1.0.xsd">
+	
+	<rabbit:connection-factory id="connectionFactory" 
+		host="127.0.0.1" username="lianze" password="lianze" port="5672" virtual-host="/" channel-cache-size="5" />
+		
+	<rabbit:admin connection-factory="connectionFactory" />
+	
+	<rabbit:queue name="spring.queue.tag" durable="true" auto-delete="false" exclusive="false" />
+	
+   <rabbit:direct-exchange name="spring.queue.exchange" durable="true" auto-delete="false">  
+        <rabbit:bindings>  
+            <rabbit:binding key="spring.queue.tag.key" queue="spring.queue.tag" />
+        </rabbit:bindings>  
+    </rabbit:direct-exchange>
+    
+    <rabbit:template id="amqpTemplate" exchange="spring.queue.exchange"  routing-key="spring.queue.tag.key" connection-factory="connectionFactory" />
+</beans>

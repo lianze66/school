@@ -13,4 +13,6 @@
 	
 	<import resource="freemarker.xml" />
 	
+	<import resource="rabbitMQ.xml" />
+	
 </beans>
