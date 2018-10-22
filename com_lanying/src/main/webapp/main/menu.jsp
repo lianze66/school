@@ -3,12 +3,6 @@
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">
 	<ul class="app-menu">
-	    <li>
-	    	<a class="app-menu__item active" href="<%=request.getContextPath()%>/main/sysUser.jsp">
-	    		<i class="app-menu__icon fa fa-user"></i>
-	    		<span class="app-menu__label">个人信息</span>
-	    	</a>
-	    </li>
 	    <li class="treeview">
 	    	<a class="app-menu__item" href="#" data-toggle="treeview">
 	    		<i class="app-menu__icon fa fa-laptop"></i>
