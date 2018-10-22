@@ -30,7 +30,7 @@
 										<th>序号</th>
 										<th>登录名称</th>
 										<th>密码</th>
-										<th>真空姓名</th>
+										<th>真实姓名</th>
 									</tr>
 								</thead>
 								<tbody>
