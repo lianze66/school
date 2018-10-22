@@ -1,13 +1,10 @@
 package com.lanying.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.lanying.dto.SysUser;
 import com.lanying.service.ISysUserService;
 
 @Controller
@@ -17,9 +14,19 @@ public class SysUserController {
 	@Autowired
 	private ISysUserService sysUserService;
 	
-	@ResponseBody
 	@RequestMapping("list")
-	public List<SysUser> list() {
-		return sysUserService.queryList();
+	public ModelAndView list(Integer page) {
+		page = page==null?1:page;
+		int pageSize = 10;
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("list", sysUserService.queryListByPage(page, pageSize));
+		mav.addObject("page", page);
+		mav.addObject("pageSize", pageSize);
+		
+		mav.setViewName("/main/system/sysUser.jsp");
+		
+		return mav;
 	}
 }

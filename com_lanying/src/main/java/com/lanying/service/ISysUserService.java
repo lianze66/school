@@ -8,4 +8,6 @@ public interface ISysUserService {
 	
 	List<SysUser> queryList();
 	
+	List<SysUser> queryListByPage(Integer page, Integer pageSize);
+	
 }

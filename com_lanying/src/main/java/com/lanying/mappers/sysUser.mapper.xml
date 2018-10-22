@@ -11,4 +11,8 @@
 	<select id="queryList" resultMap="sysUserMap">
 		select * from sys_user;
 	</select>
+	
+	<select id="queryListByPage" resultMap="sysUserMap">
+		select * from sys_user limit #{pageIndex},#{pageSize};
+	</select>
 </mapper>

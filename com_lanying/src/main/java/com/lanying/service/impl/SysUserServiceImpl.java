@@ -19,4 +19,9 @@ public class SysUserServiceImpl implements ISysUserService {
 	public List<SysUser> queryList() {
 		return sysUserDAO.queryList();
 	}
+
+	@Override
+	public List<SysUser> queryListByPage(Integer page, Integer pageSize) {
+		return sysUserDAO.queryListByPage((page-1)*pageSize, pageSize);
+	}
 }
