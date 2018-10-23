@@ -1,9 +1,7 @@
 package com.lanying.shiro;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -15,50 +13,57 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
+import com.lanying.dto.SysRole;
+import com.lanying.service.ISysUserService;
+
 public class MyShiroRealm extends AuthorizingRealm {
 	
-	private static Map<String, String> userInfoMap;
+	private ISysUserService sysUserService;
 	
-	static {
-		userInfoMap = new HashMap<String, String>();
-		userInfoMap.put("lianze", "123456");
-		userInfoMap.put("andy", "123456");
-		userInfoMap.put("coco", "123456");
-	}
-
+	/**
+	 * 授权
+	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		String username = (String) principals.fromRealm(getName()).iterator().next();
-		if (username != null) {
-			List<String> perms = new ArrayList<String>();
-			perms.add("role1");
-			perms.add("role2");
+		System.out.println("============= 我是授权方法。 =============");
+		String loginName = (String) principals.getPrimaryPrincipal();
+		if (loginName != null) {
+			List<String> roles = sysUserService.querySysRoleListByLoginName(loginName);
 			
-			if (perms != null && !perms.isEmpty()) {
-				SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-				for (String each : perms) {
-					// 将权限资源添加到用户信息中
-					info.addStringPermission(each);
-				}
-				return info;
-			}
+			List<String> perms = new ArrayList<String>();
+			perms.add("permit1");
+			perms.add("permit2");
+			
+			SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+			info.addRoles(roles);
+			info.addStringPermissions(perms);
+			return info;
 		}
 		return null;
 	}
-
+	
+	/**
+	 * 认证
+	 */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken authenticationToken) throws AuthenticationException {
+		AuthenticationInfo info = null;
+		System.out.println("============= 我是认证方法。 =============");
 		UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
 		// 通过表单接收的用户名，调用currentUser.login的时候执行 
-		String username = token.getUsername();
-		if (username != null && !"".equals(username)) {
+		String loginName = token.getUsername();
+		if (loginName != null && !"".equals(loginName)) {
 			// 查询密码
-			String password = userInfoMap.get(username);
+			String password = sysUserService.getPasswordByLoginName(loginName);
 			if (password != null) {
-				return new SimpleAuthenticationInfo(username, password, getName());
+				info = new SimpleAuthenticationInfo(loginName, password, getName());
 			}
 		}
-		return null;
+		return info;
+	}
+
+	public void setSysUserService(ISysUserService sysUserService) {
+		this.sysUserService = sysUserService;
 	}
 }

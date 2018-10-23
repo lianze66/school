@@ -15,4 +15,8 @@
 	<select id="queryListByPage" resultMap="sysUserMap">
 		select * from sys_user limit #{pageIndex},#{pageSize};
 	</select>
+	
+	<select id="getPasswordByLoginName" parameterType="string">
+		select password from sys_user where login_name=#{loginName};
+	</select>
 </mapper>

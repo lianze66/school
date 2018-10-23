@@ -24,4 +24,15 @@ public class SysUserServiceImpl implements ISysUserService {
 	public List<SysUser> queryListByPage(Integer page, Integer pageSize) {
 		return sysUserDAO.queryListByPage((page-1)*pageSize, pageSize);
 	}
+
+	@Override
+	public String getPasswordByLoginName(String loginName) {
+		return sysUserDAO.getPasswordByLoginName(loginName);
+	}
+	
+	@Override
+	public List<String> querySysRoleListByLoginName(String loginName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

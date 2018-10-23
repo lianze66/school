@@ -12,4 +12,6 @@ public interface ISysUserDAO {
 	
 	List<SysUser> queryListByPage(@Param("pageIndex")Integer pageIndex, @Param("pageSize")Integer pageSize);
 	
+	String getPasswordByLoginName(String loginName);
+	
 }

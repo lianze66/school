@@ -1,5 +1,8 @@
 <%@page contentType="text/html; charset=UTF-8"%>
 
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
+<shiro:hasRole name="admin"></shiro:hasRole>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -26,7 +29,7 @@
 								<a href="#"><img
 									src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"></a>
 								<div class="content">
-									<h5><a href="#">John Doe</a></h5>
+									<h5><a href="#"><shiro:principal /></a></h5>
 									<p class="text-muted"><small>2 January at 9:30</small></p>
 								</div>
 							</div>
