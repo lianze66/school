@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+      http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="myShiroRealm" />
+	</bean>
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<!--去登录的地址 -->
+		<property name="loginUrl" value="/main/login.jsp" />
+		<!--登录成功的跳转地址 -->
+		<property name="successUrl" value="/main/index.jsp" />
+		<!--验证失败的跳转地址 -->
+		<property name="unauthorizedUrl" value="/main/error.jsp" />
+		<!--定义过滤的规则 -->
+		<property name="filterChainDefinitions">
+			<value>
+				/view/* = anon
+				/sysUser/login.do = anon
+				/logout = logout
+				/main/* = authc
+				/*.do = authc
+			</value>
+		</property>
+	</bean>
+
+	<bean id="myShiroRealm" class="com.lanying.shiro.MyShiroRealm">
+<!-- 		<property name="shiroService" ref="shiroService" /> -->
+	</bean>
+	
+	<bean id="logout" class="org.apache.shiro.web.filter.authc.LogoutFilter">
+        <property name="redirectUrl" value="/loginform" />
+    </bean>
+</beans>

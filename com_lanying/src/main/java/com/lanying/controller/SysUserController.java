@@ -14,6 +14,11 @@ public class SysUserController {
 	@Autowired
 	private ISysUserService sysUserService;
 	
+	@RequestMapping("login.do")
+	public void login(String loginName, String password) {
+		
+	}
+	
 	@RequestMapping("list")
 	public ModelAndView list(Integer page) {
 		page = page==null?1:page;

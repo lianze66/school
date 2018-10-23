@@ -23,4 +23,7 @@
 		<property name="basePackage" value="com.lanying.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
+	
+	<import resource="shiro.xml" />
+	
 </beans>
