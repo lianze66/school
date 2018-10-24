@@ -1,5 +1,7 @@
 package com.lanying.dto;
 
+import java.util.List;
+
 public class SysUser {
 	
 	private Integer id;
@@ -9,6 +11,8 @@ public class SysUser {
 	private String password;
 	
 	private String realName;
+	
+	private List<SysRole> sysRoleList; // 当前用户的角色列表。
 
 	public Integer getId() {
 		return id;
@@ -40,5 +44,13 @@ public class SysUser {
 
 	public void setRealName(String realName) {
 		this.realName = realName;
+	}
+
+	public List<SysRole> getSysRoleList() {
+		return sysRoleList;
+	}
+
+	public void setSysRoleList(List<SysRole> sysRoleList) {
+		this.sysRoleList = sysRoleList;
 	}
 }

@@ -14,4 +14,6 @@ public interface ISysUserDAO {
 	
 	String getPasswordByLoginName(String loginName);
 	
+	Integer getIdByLoginName(String loginName);
+	
 }

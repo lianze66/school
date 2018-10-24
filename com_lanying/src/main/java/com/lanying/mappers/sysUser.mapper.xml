@@ -19,4 +19,8 @@
 	<select id="getPasswordByLoginName" parameterType="string">
 		select password from sys_user where login_name=#{loginName};
 	</select>
+	
+	<select id="getIdByLoginName" parameterType="string">
+		select id from sys_user where login_name=#{loginName};
+	</select>
 </mapper>

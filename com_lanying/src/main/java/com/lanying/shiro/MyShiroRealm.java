@@ -1,6 +1,5 @@
 package com.lanying.shiro;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.shiro.authc.AuthenticationException;
@@ -13,12 +12,17 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
-import com.lanying.dto.SysRole;
+import com.lanying.service.ISysModelService;
+import com.lanying.service.ISysRoleService;
 import com.lanying.service.ISysUserService;
 
 public class MyShiroRealm extends AuthorizingRealm {
 	
 	private ISysUserService sysUserService;
+	
+	private ISysRoleService sysRoleService;
+	
+	private ISysModelService sysModelService;
 	
 	/**
 	 * 授权
@@ -28,11 +32,8 @@ public class MyShiroRealm extends AuthorizingRealm {
 		System.out.println("============= 我是授权方法。 =============");
 		String loginName = (String) principals.getPrimaryPrincipal();
 		if (loginName != null) {
-			List<String> roles = sysUserService.querySysRoleListByLoginName(loginName);
-			
-			List<String> perms = new ArrayList<String>();
-			perms.add("permit1");
-			perms.add("permit2");
+			List<String> roles = sysRoleService.getNamesByLoginName(loginName);
+			List<String> perms = sysModelService.getNamesByLoginName(loginName);
 			
 			SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 			info.addRoles(roles);
@@ -63,7 +64,27 @@ public class MyShiroRealm extends AuthorizingRealm {
 		return info;
 	}
 
+	public ISysUserService getSysUserService() {
+		return sysUserService;
+	}
+
 	public void setSysUserService(ISysUserService sysUserService) {
 		this.sysUserService = sysUserService;
+	}
+
+	public ISysRoleService getSysRoleService() {
+		return sysRoleService;
+	}
+
+	public void setSysRoleService(ISysRoleService sysRoleService) {
+		this.sysRoleService = sysRoleService;
+	}
+
+	public ISysModelService getSysModelService() {
+		return sysModelService;
+	}
+
+	public void setSysModelService(ISysModelService sysModelService) {
+		this.sysModelService = sysModelService;
 	}
 }

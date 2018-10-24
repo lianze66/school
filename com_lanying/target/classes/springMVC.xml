@@ -14,7 +14,7 @@
     
     <context:component-scan base-package="com.lanying.controller" />
     <context:component-scan base-package="com.lanying.service.impl" />
- 
+    
  	<mvc:annotation-driven ignore-default-model-on-redirect="true">
 		<mvc:message-converters register-defaults="false">
 			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
@@ -29,5 +29,5 @@
 	
 	<!-- 配置资源文件,防止被拦截 -->
 	<mvc:default-servlet-handler />
-    
+	
 </beans>

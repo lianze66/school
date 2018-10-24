@@ -29,10 +29,4 @@ public class SysUserServiceImpl implements ISysUserService {
 	public String getPasswordByLoginName(String loginName) {
 		return sysUserDAO.getPasswordByLoginName(loginName);
 	}
-	
-	@Override
-	public List<String> querySysRoleListByLoginName(String loginName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

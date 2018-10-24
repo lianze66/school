@@ -10,8 +10,6 @@ public interface ISysUserService {
 	
 	List<SysUser> queryListByPage(Integer page, Integer pageSize);
 	
-	List<String> querySysRoleListByLoginName(String loginName);
-	
 	String getPasswordByLoginName(String loginName);
 	
 }
