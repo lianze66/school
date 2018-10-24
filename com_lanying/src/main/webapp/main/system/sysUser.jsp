@@ -17,7 +17,7 @@
 		
 		<jsp:include page="../top.jsp"></jsp:include>
 	
-		<jsp:include page="../menu.jsp"></jsp:include>
+		<jsp:include page="/sysUser/loadMenuData.do"></jsp:include>
 		
 		<main class="app-content">
 			<div class="row">

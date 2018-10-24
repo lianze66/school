@@ -1,5 +1,7 @@
 package com.lanying.controller;
 
+import java.util.List;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.lanying.dto.SysModel;
+import com.lanying.service.ISysModelService;
 import com.lanying.service.ISysUserService;
 
 @Controller
@@ -18,6 +22,9 @@ public class SysUserController {
 	
 	@Autowired
 	private ISysUserService sysUserService;
+	
+	@Autowired
+	private ISysModelService sysModelService;
 	
 	@RequestMapping(value="login.do")
 	public ModelAndView login(String loginName, String password) {
@@ -42,7 +49,18 @@ public class SysUserController {
 		return mav;
 	}
 	
-	@RequestMapping("list")
+	@RequestMapping("loadMenuData.do")
+	public ModelAndView loadMenuData() {
+		ModelAndView mav = new ModelAndView();
+		
+		List<SysModel> menuList = sysModelService.getTreeList();
+		mav.addObject("menuList", menuList);
+		mav.setViewName("/main/menu.jsp");
+		
+		return mav;
+	}
+	
+	@RequestMapping("list.do")
 	public ModelAndView list(Integer page) {
 		page = page==null?1:page;
 		int pageSize = 10;
