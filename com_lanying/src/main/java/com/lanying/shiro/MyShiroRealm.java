@@ -67,25 +67,13 @@ public class MyShiroRealm extends AuthorizingRealm {
 		}
 		return info;
 	}
-
-	public ISysUserService getSysUserService() {
-		return sysUserService;
-	}
-
+	
 	public void setSysUserService(ISysUserService sysUserService) {
 		this.sysUserService = sysUserService;
 	}
-
-	public ISysRoleService getSysRoleService() {
-		return sysRoleService;
-	}
-
+	
 	public void setSysRoleService(ISysRoleService sysRoleService) {
 		this.sysRoleService = sysRoleService;
-	}
-
-	public ISysModelService getSysModelService() {
-		return sysModelService;
 	}
 
 	public void setSysModelService(ISysModelService sysModelService) {
