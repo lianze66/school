@@ -16,11 +16,11 @@
 		select * from sys_user limit #{pageIndex},#{pageSize};
 	</select>
 	
-	<select id="getPasswordByLoginName" parameterType="string">
+	<select id="getPasswordByLoginName" parameterType="string" resultType="string">
 		select password from sys_user where login_name=#{loginName};
 	</select>
 	
-	<select id="getIdByLoginName" parameterType="string">
+	<select id="getIdByLoginName" parameterType="string" resultType="int">
 		select id from sys_user where login_name=#{loginName};
 	</select>
 </mapper>

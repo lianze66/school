@@ -3,11 +3,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.lanying.dao.ISysModelDAO">
-	<select id="getListByParentId" resultType="int">
+	<select id="getListByParentId" resultType="sysModel">
 		select * from sys_model where parent_id=#{parentId};
 	</select>
 	
-	<select id="getListByLoginName" resultType="string">
+	<select id="getListByLoginName" resultType="sysModel">
 		select * from sys_model where id in (select model_id from sys_role_model where role_id in (select role_id from sys_user_role where user_id=(select id from sys_user where login_name=#{loginName})));
 	</select>
 	

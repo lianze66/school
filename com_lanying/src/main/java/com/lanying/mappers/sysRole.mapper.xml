@@ -3,11 +3,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.lanying.dao.ISysRoleDAO">
-	<select id="queryListByUserId" resultType="sysRole">
-		select * from sys_role where id in (select * from sys_user_role where user_id=#{userId});
+	<select id="queryListByUserId" parameterType="int" resultType="sysRole">
+		select * from sys_role where id in (select role_id from sys_user_role where user_id=#{userId});
 	</select>
 	
-	<select id="getNameListByUserId" resultType="sysRole">
-		select name from sys_role where id in (select * from sys_user_role where user_id=#{userId});
+	<select id="getNameListByUserId" parameterType="int" resultType="string">
+		select name from sys_role where id in (select role_id from sys_user_role where user_id=#{userId});
 	</select>
 </mapper>
