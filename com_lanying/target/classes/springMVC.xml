@@ -13,7 +13,6 @@
       http://www.springframework.org/schema/context/spring-context-4.0.xsd">
     
     <context:component-scan base-package="com.lanying.controller" />
-    <context:component-scan base-package="com.lanying.service.impl" />
     
  	<mvc:annotation-driven ignore-default-model-on-redirect="true">
 		<mvc:message-converters register-defaults="false">

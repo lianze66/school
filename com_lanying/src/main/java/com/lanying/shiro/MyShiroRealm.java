@@ -11,12 +11,16 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.lanying.service.ISysModelService;
 import com.lanying.service.ISysRoleService;
 import com.lanying.service.ISysUserService;
 
 public class MyShiroRealm extends AuthorizingRealm {
+	
+	private static final Logger log = LoggerFactory.getLogger(MyShiroRealm.class);
 	
 	private ISysUserService sysUserService;
 	
@@ -29,7 +33,7 @@ public class MyShiroRealm extends AuthorizingRealm {
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		System.out.println("============= 我是授权方法。 =============");
+		log.info("============= 我是授权方法。 =============");
 		String loginName = (String) principals.getPrimaryPrincipal();
 		if (loginName != null) {
 			List<String> roles = sysRoleService.getNamesByLoginName(loginName);
@@ -50,7 +54,7 @@ public class MyShiroRealm extends AuthorizingRealm {
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken authenticationToken) throws AuthenticationException {
 		AuthenticationInfo info = null;
-		System.out.println("============= 我是认证方法。 =============");
+		log.info("============= 我是认证方法。 =============");
 		UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
 		// 通过表单接收的用户名，调用currentUser.login的时候执行 
 		String loginName = token.getUsername();
