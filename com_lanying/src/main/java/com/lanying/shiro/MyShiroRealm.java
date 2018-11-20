@@ -33,8 +33,9 @@ public class MyShiroRealm extends AuthorizingRealm {
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		log.info("============= 我是授权方法。 =============");
 		String loginName = (String) principals.getPrimaryPrincipal();
+		log.info("为用户【"+loginName+"】进行授权操作……");
+		
 		if (loginName != null) {
 			List<String> roles = sysRoleService.getNamesByLoginName(loginName);
 			List<String> perms = sysModelService.getNamesByLoginName(loginName);
@@ -54,12 +55,11 @@ public class MyShiroRealm extends AuthorizingRealm {
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken authenticationToken) throws AuthenticationException {
 		AuthenticationInfo info = null;
-		log.info("============= 我是认证方法。 =============");
 		UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
-		// 通过表单接收的用户名，调用currentUser.login的时候执行 
+		
 		String loginName = token.getUsername();
+		log.info("对用户【"+loginName+"】进行认证操作……");
 		if (loginName != null && !"".equals(loginName)) {
-			// 查询密码
 			String password = sysUserService.getPasswordByLoginName(loginName);
 			if (password != null) {
 				info = new SimpleAuthenticationInfo(loginName, password, getName());
